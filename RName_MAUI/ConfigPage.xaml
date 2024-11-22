@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RName_MAUI.ConfigPage"
+             Title="ConfigPage" >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <!--
+        <Grid ColumnDefinitions="1*,3*,3*,3*,3*" Grid.ColumnSpan="2" Grid.Row="0">
+            <Label Text="IsChoosed" Grid.Column="0" HorizontalTextAlignment="Start"/>
+            <Label Text="Name" Grid.Column="1" HorizontalTextAlignment="Start"/>
+            <Label Text="Weigth" Grid.Column="2" HorizontalTextAlignment="Start"/>
+            <Label Text="IsEnable" Grid.Column="4" HorizontalTextAlignment="Start"/>
+        </Grid>
+        -->
+        <ScrollView Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1">
+            <CollectionView x:Name="NameListView" ItemsSource="{Binding Path=NameInfos}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="1*,3*,3*,3*,3*">
+                            <CheckBox IsChecked="{Binding IsChoosed}"/>
+                            <Label Text="{Binding Name}" Grid.Column="1"/>
+                            <Slider Maximum="100" Value="{Binding Weigth}" Grid.Column="3" x:Name="slider"/>
+                            <Label Text="{Binding Source={Reference slider}, Path=Value}" Grid.Column="2"/>
+                            <CheckBox IsChecked="{Binding IsEnable}" Grid.Column="4"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        <Button Text="ReadFromFile" x:Name="ReadFromFileButton" Grid.Column="2" Style="{StaticResource defualtButtonStyle}"
+                Clicked="ReadFromFileButton_Clicked"/>
+        <Editor Grid.Row="2" Grid.Column="0" x:Name="NameEditor" Text="{Binding Path=NameToAddText}"
+                FontSize="20" Completed="AddNameButton_Clicked" Placeholder="name..."/>
+        <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" x:Name="AddNameButton" Text="Add" 
+                Style="{StaticResource defualtButtonStyle}" Clicked="AddNameButton_Clicked"/>
+        <Button Grid.Row="2" Grid.Column="2" x:Name="DeleteButton" Style="{StaticResource defualtButtonStyle}" 
+                Text="Delete" Clicked="DeleteButton_Clicked"/>
+    </Grid>
+</ContentPage>
