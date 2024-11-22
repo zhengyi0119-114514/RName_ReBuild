@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace RName_MAUI
+namespace RNameMAUI
 {
     public class Program
     {

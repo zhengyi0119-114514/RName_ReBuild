@@ -1,4 +1,4 @@
-﻿namespace RName_MAUI
+﻿namespace RNameMAUI
 {
     public partial class AppShell : Shell
     {

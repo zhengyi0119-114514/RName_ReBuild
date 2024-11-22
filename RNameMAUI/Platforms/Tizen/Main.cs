@@ -1,8 +1,8 @@
-using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
+using System;
 
-namespace RName_MAUI
+namespace RNameMAUI
 {
     internal class Program : MauiApplication
     {
